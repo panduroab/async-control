@@ -1,0 +1,24 @@
+{
+  "name": "async-control",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/panduroab/async-control.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panduroab/async-control/issues"
+  },
+  "homepage": "https://github.com/panduroab/async-control",
+  "dependencies": {
+    "async": "^1.4.2",
+    "mkdirp": "^0.5.1",
+    "request": "^2.64.0"
+  }
+}
