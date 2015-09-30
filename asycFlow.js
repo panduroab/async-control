@@ -1,3 +1,4 @@
+//1
 var async = require('async');
 
 /**
@@ -6,6 +7,7 @@ var async = require('async');
  */
 function seriesTimer() {
     var start = new Date;
+    //Sequential execution
     async.series([
         function (next) {
             setTimeout(function () {
@@ -33,9 +35,14 @@ function seriesTimer() {
 /**
  * async.parallel test
  * @return {undefined}
+ * parallel is about kicking-off I/O tasks in parallel, not about parallel execution of code. 
+ * If your tasks do not use any timers or perform any I/O, they will actually be executed in series. 
+ * Any synchronous setup sections for each task will happen one after the other. 
+ * JavaScript remains single-threaded.
  */
 function parallelTimer() {
     var start = new Date;
+    //Parallel execution
     async.parallel([
         function (next) {
             setTimeout(function () {
@@ -66,6 +73,7 @@ function parallelTimer() {
  */
 function waterfallTimer() {
     var start = new Date;
+    //Secuential execution
     async.waterfall([
         function (next) {
             setTimeout(function () {
@@ -91,6 +99,22 @@ function waterfallTimer() {
     });
 }
 
+/**
+ * Forever timer
+ * @return {[type]} [description]
+ */
+function foreverTimer() {
+    async.forever(function (next) {
+        setTimeout(function () {
+            console.log(new Date);
+            next();
+        }, 1000);
+    }, function (err) {
+        console.log("Error: ", err);
+    });
+}
+
+//foreverTimer();
 //seriesTimer();
-parallelTimer();
+//parallelTimer();
 //waterfallTimer();

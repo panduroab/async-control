@@ -1,3 +1,4 @@
+//3
 /**
  * async.series and async.parallel have limitations
  *     1. The task array is static. Once called you can't add or remove tasks.
@@ -15,6 +16,7 @@ function simple() {
         next();
     }
 
+    //Limited parallel execution
     var queue = async.queue(worker, concurrency);
 
     queue.push(1);
@@ -30,6 +32,7 @@ function queueTimers() {
         setTimeout(next, data);
     }
 
+    //Limited parallel execution
     var queue = async.queue(worker, concurrency);
     var start = new Date;
     queue.drain = function () {
